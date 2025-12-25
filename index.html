@@ -30,6 +30,9 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .shimmer { background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
         .video-container video { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* New Style for Description Formatting */
+        .desc-text { white-space: pre-wrap; word-wrap: break-word; }
     </style>
 </head>
 <body>
@@ -120,7 +123,7 @@
 <!-- Unified Modal System -->
 <div id="modalOverlay" class="fixed inset-0 bg-gray-950/90 backdrop-blur-xl hidden z-[100] items-center justify-center p-6 opacity-0 transition-all duration-300">
     <!-- Admin Login -->
-    <div id="loginModal" class="bg-white rounded-[2.5rem] w-full max-w-sm p-10 hidden shadow-2xl">
+    <div id="loginModal" class="bg-white rounded-[2.5rem] w-full max-sm p-10 hidden shadow-2xl">
         <h3 class="text-2xl font-black mb-6 text-center uppercase italic">Admin Access</h3>
         <input id="passInput" type="password" placeholder="Passkey" class="w-full bg-gray-50 p-5 rounded-2xl mb-6 text-center text-2xl font-black border-2 border-gray-100">
         <button onclick="tryLogin()" class="w-full bg-indigo-600 text-white py-5 rounded-2xl font-black uppercase tracking-widest">Verify</button>
@@ -148,7 +151,7 @@
                 <input id="vNotes" type="text" placeholder="Lecture Notes PDF Link" class="w-full bg-gray-50 p-5 rounded-2xl border border-gray-100">
                 <input id="vChapNotes" type="text" placeholder="Chapter One Pager Link" class="w-full bg-gray-50 p-5 rounded-2xl border border-gray-100">
             </div>
-            <textarea id="vCustomDesc" placeholder="AI/Custom Description" class="w-full bg-gray-50 p-5 rounded-2xl border border-gray-100 h-32"></textarea>
+            <textarea id="vCustomDesc" placeholder="AI/Custom Description (Yahan Enter dabane par paragraph change hoga)" class="w-full bg-gray-50 p-5 rounded-2xl border border-gray-100 h-32"></textarea>
             <input type="hidden" id="editId">
             <div class="flex gap-4 pt-4">
                 <button onclick="closeModals()" class="flex-1 bg-gray-100 py-5 rounded-2xl font-bold uppercase text-xs">Cancel</button>
@@ -195,7 +198,7 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -227,8 +230,12 @@ async function startup() {
 }
 
 function listen() {
+    // Corrected to show in order of upload (oldest first for L1, L2 sequence)
     onSnapshot(collection(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos'), snap => {
-        videoList = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        const rawData = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        // Sorting in Javascript to avoid complex Firebase indexes
+        videoList = rawData.sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+        
         if(videoList.length > 0 && !currentSubject) {
             const availableSubs = [...new Set(videoList.map(v => v.subject))];
             currentSubject = SUBJECT_ORDER.find(s => availableSubs.includes(s)) || availableSubs[0];
@@ -244,7 +251,6 @@ window.playVideo = (url) => {
 
     showModal('playerModal');
     
-    // Clean up previous instance
     if (hlsInstance) {
         hlsInstance.destroy();
         hlsInstance = null;
@@ -261,15 +267,6 @@ window.playVideo = (url) => {
         hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
             video.play().catch(e => console.log("Auto-play prevented", e));
         });
-        hlsInstance.on(Hls.Events.ERROR, (event, data) => {
-            if (data.fatal) {
-                switch(data.type) {
-                    case Hls.ErrorTypes.NETWORK_ERROR: hlsInstance.startLoad(); break;
-                    case Hls.ErrorTypes.MEDIA_ERROR: hlsInstance.recoverMediaError(); break;
-                    default: hlsInstance.destroy(); break;
-                }
-            }
-        });
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
         video.src = url;
         video.addEventListener('loadedmetadata', () => {
@@ -277,29 +274,6 @@ window.playVideo = (url) => {
         });
     }
 };
-
-async function fetchAI(video, element) {
-    if (video.customDescription || !element) return;
-    if (descCache.has(video.id)) {
-        element.innerText = descCache.get(video.id);
-        element.classList.remove('shimmer');
-        return;
-    }
-    try {
-        const apiKey = ""; 
-        const prompt = `Class 11 ${video.subject} Chapter ${video.chapter} Topic ${video.title} ke liye Hinglish descriptive text likho (50 words).`;
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
-        });
-        const data = await res.json();
-        const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "Premium content for JITU students.";
-        descCache.set(video.id, text);
-        element.innerText = text;
-        element.classList.remove('shimmer');
-    } catch (e) { element.innerText = "Access premium lectures for Class 11."; }
-}
 
 window.render = () => {
     const subList = document.getElementById('subjectList');
@@ -314,7 +288,9 @@ window.render = () => {
     
     document.getElementById('activeSubjectName').innerText = currentSubject || "Study Materials";
     const subVideos = videoList.filter(v => v.subject === currentSubject && v.title.toLowerCase().includes(search));
-    const chapters = [...new Set(subVideos.map(v => v.chapter || 'General'))].sort();
+    
+    // Grouping chapters but maintaining the sorted video order within each chapter
+    const chapters = [...new Set(subVideos.map(v => v.chapter || 'General'))];
 
     document.getElementById('emptyState').classList.toggle('hidden', subVideos.length > 0);
 
@@ -344,8 +320,9 @@ window.render = () => {
                             </div>
                             <div class="p-8 flex-1 flex flex-col">
                                 <h4 class="text-lg font-black text-gray-900 mb-3 uppercase leading-tight">${v.title}</h4>
-                                <p id="desc-${v.id}" class="text-[11px] text-gray-500 mb-6 leading-relaxed font-medium flex-1 ${v.customDescription ? '' : 'shimmer rounded min-h-[40px]'}">
-                                    ${v.customDescription || 'Generating description...'}
+                                <!-- Added desc-text class for formatting preservation -->
+                                <p id="desc-${v.id}" class="desc-text text-[11px] text-gray-500 mb-6 leading-relaxed font-medium flex-1">
+                                    ${v.customDescription || 'Access premium education lectures.'}
                                 </p>
                                 <div class="flex items-center gap-3">
                                     <button onclick="playVideo('${v.m3u8Url}')" class="flex-1 bg-indigo-600 text-white text-[9px] font-black py-4 rounded-xl uppercase shadow-lg shadow-indigo-100">Play Now</button>
@@ -359,10 +336,6 @@ window.render = () => {
             </div>
         `;
     }).join('');
-
-    subVideos.forEach(v => {
-        if (!v.customDescription) fetchAI(v, document.getElementById(`desc-${v.id}`));
-    });
 };
 
 window.saveVideo = async () => {
@@ -373,8 +346,12 @@ window.saveVideo = async () => {
     
     if(title && m3u8Url) {
         const data = { title, subject: sub, chapter: chap || 'General', m3u8Url, notes, chapNotes, customDescription: customDesc, updatedAt: Date.now() };
-        if(editId) await updateDoc(doc(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos', editId), data);
-        else await addDoc(collection(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos'), { ...data, createdAt: Date.now() });
+        if(editId) {
+            await updateDoc(doc(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos', editId), data);
+        } else {
+            // Added createdAt to maintain sequence
+            await addDoc(collection(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos'), { ...data, createdAt: Date.now() });
+        }
         closeModals();
     } else alert("Details missing!");
 };
