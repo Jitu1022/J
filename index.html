@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jitu | Free Notes & Video Lectures</title>
+    <title>JITU | Free Notes & Video Lectures</title>
     <meta name="description" content="JITU Vault provides high-quality Class 11 Science study material. Get free notes and video lectures.">
     
-    <!-- Scripts that need to be ready early -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbackend.js?client=ca-pub-7037140892556243" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,21 +35,26 @@
         .resource-card { background: #f8fafc; border-radius: 16px; padding: 1rem; margin-bottom: 0.75rem; border: 1px solid transparent; transition: all 0.2s; }
         .resource-card:hover { border-color: #cbd5e1; background: white; }
 
-        #globalLoader { position: fixed; inset: 0; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10000; }
+        #globalLoader { position: fixed; inset: 0; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; }
         .spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid var(--pw-blue); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .hero-gradient { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
         .footer-card { background: white; border: 1px solid #eef2f6; border-radius: 2rem; padding: 2.5rem; }
+
+        /* Yellow Promo Box Style */
+        .yellow-box { background: #ffeb3b; border: 4px solid #000; border-radius: 24px; box-shadow: 8px 8px 0px #000; margin-bottom: 2rem; padding: 24px; text-align: center; }
     </style>
 </head>
 <body>
 
-<!-- Loader ko priority z-index diya hai -->
 <div id="globalLoader">
     <div class="spinner"></div>
     <p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-indigo-600">Ruko jara sabar karo🤠 Loading...</p>
 </div>
+
+<!-- 🔔 Adsterra Sidebar/Social Bar Scripts -->
+<script type='text/javascript' src='//directsinew.com/e7/4b/57/e74b57d46e07ba1cd2bd054af0522b8d.js'></script>
 
 <header class="sticky top-0 z-50">
     <nav class="glass-nav px-6 py-4">
@@ -79,17 +83,17 @@
     </div>
 </section>
 
-<!-- 🚨 EARNING PROMO BANNER -->
+<!-- 🚨 EARNING YELLOW BOX SECTION -->
 <div class="max-w-3xl mx-auto mt-8 px-6">
-    <div style="background: #ffeb3b; padding: 20px; text-align: center; border: 3px solid #000; border-radius: 24px; box-shadow: 0 10px 0 #000;">
-        <h2 style="color: #000; font-weight: 800; font-size: 1.25rem; text-transform: uppercase; margin-bottom: 5px;">💰 Students Pocket Money Guide!</h2>
-        <p style="color: #000; font-weight: 600; font-size: 14px; margin-bottom: 15px;">Study ke saath ₹15,000 mahina kaise kamaye? (Without Investment)</p>
-        <a href="https://jituearningtips.blogspot.com" target="_blank" style="background: #f44336; color: #fff; padding: 12px 24px; text-decoration: none; border-radius: 12px; font-weight: 800; display: inline-block; text-transform: uppercase; border: 2px solid #000;">Yahan Se Dekho →</a>
+    <div class="yellow-box">
+        <h2 class="text-black font-black text-xl uppercase mb-2">💸 Without Investment Aur Bina Mehnat Paise Kamao!🤑</h2>
+        <p class="text-black font-bold text-sm mb-4">Yaha dekho kese mahine ke ₹15,000 kamayein. Bilkul free trick!</p>
+        <a href="https://jituearningtips.blogspot.com" target="_blank" class="inline-block bg-[#f44336] text-white px-8 py-3 rounded-xl font-black uppercase border-2 border-black hover:scale-105 transition-transform">Visit Blog Now →</a>
     </div>
 </div>
 
 <!-- Platforms Selection -->
-<section class="bg-white px-6 pt-12 pb-6">
+<section class="bg-white px-6 pt-4 pb-6">
     <div class="max-w-3xl mx-auto">
         <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4 text-center">Choose Your Platform</p>
         <div class="grid grid-cols-2 gap-4">
@@ -124,8 +128,8 @@
             <p class="text-xl font-bold text-gray-300 uppercase">No Content Found...</p>
         </div>
 
-        <!-- Footer Parts -->
-        <div class="mt-40 space-y-16">
+        <!-- FOOTER SECTIONS -->
+          <div class="mt-40 space-y-16">
             <div id="about-us" class="footer-card">
                 <h2 class="text-3xl font-bold uppercase text-indigo-900 mb-8 border-b-4 border-indigo-600 inline-block">About Us</h2>
                 <p class="text-lg text-gray-700 leading-relaxed font-semibold">JITU VAULT ek educational platform hai jo specially Class 11 Science ke students ko dhyan mein rakkar banaya gaya hai. Humara mission har student ko Physics Wallah (PW) aur Next Toppers (NT) ke premium quality lectures aur handwritten notes free of cost provide karna hai, taaki financial barriers unki padhai mein rukaavat na banein.</p>
@@ -156,11 +160,26 @@
 
 <!-- Modal System -->
 <div id="modalOverlay" class="fixed inset-0 bg-gray-950/90 backdrop-blur-xl hidden z-[100] items-center justify-center p-6 opacity-0 transition-all duration-300">
-    <div id="loginModal" class="bg-white rounded-[2.5rem] w-full max-sm p-10 hidden shadow-2xl">
+    
+    <!-- Admin Login -->
+    <div id="loginModal" class="bg-white rounded-[2.5rem] w-full max-w-sm p-10 hidden shadow-2xl">
         <h3 class="text-2xl font-bold mb-6 text-center uppercase">Admin Access</h3>
         <input id="passInput" type="password" placeholder="Passkey" class="w-full bg-gray-50 p-5 rounded-2xl mb-6 text-center text-2xl font-bold border-2 border-gray-100 outline-none">
         <button onclick="tryLogin()" class="w-full bg-indigo-600 text-white py-5 rounded-2xl font-bold uppercase tracking-widest">Verify</button>
     </div>
+
+    <!-- Rename Chapter Modal -->
+    <div id="renameModal" class="bg-white rounded-[2.5rem] w-full max-w-sm p-10 hidden shadow-2xl">
+        <h3 class="text-xl font-bold mb-6 text-center uppercase text-indigo-900">Rename Chapter</h3>
+        <input id="newNameInput" type="text" placeholder="Enter New Name" class="w-full bg-gray-50 p-5 rounded-2xl mb-6 font-bold border-2 border-gray-100 outline-none">
+        <input type="hidden" id="oldNameStore">
+        <div class="flex gap-4">
+            <button onclick="closeModals()" class="flex-1 bg-gray-100 py-4 rounded-xl font-bold uppercase text-[10px]">Cancel</button>
+            <button onclick="processRename()" class="flex-1 bg-indigo-600 text-white py-4 rounded-xl font-bold uppercase text-[10px]">Update All</button>
+        </div>
+    </div>
+
+    <!-- Content Upload Modal -->
     <div id="addModal" class="bg-white rounded-[2.5rem] w-full max-w-xl p-10 hidden max-h-[90vh] overflow-y-auto no-scrollbar">
         <h3 class="text-3xl font-bold mb-8 uppercase text-indigo-900">Add Content</h3>
         <div class="space-y-4">
@@ -192,6 +211,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Player -->
     <div id="playerModal" class="bg-black rounded-3xl w-full max-w-4xl overflow-hidden hidden shadow-2xl relative">
         <button onclick="closeModals()" class="absolute top-4 right-4 z-50 bg-white/20 text-white p-2 rounded-full hover:bg-white/40">✕</button>
         <div class="aspect-video bg-black">
@@ -203,9 +224,6 @@
 <footer class="bg-white border-t border-gray-100 py-12 px-8 text-center mt-20">
     <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.3em]">© 2024 JITU EDUCATIONAL HUB | SIKSHA SABKE LIYE</p>
 </footer>
-
-<!-- 🔔 Adsterra Smart Bar Script (Line 238) -->
-<script src="https://directsinew.com/e7/4b/57/e74b57d46e07ba1cd2bd054af0522b8d.js"></script>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
@@ -224,28 +242,16 @@ const firebaseConfig = {
 let db, auth, videoList = [], isAdmin = false, currentSubject = '', currentPlatform = 'PW';
 const PASS_KEY = "Jitu9027", COLLECTION_ID = "jitu_ultra_premium_v2";
 const SUBJECT_ORDER = ["Physics", "Chemistry", "Maths", "Biology", "English"];
-
-// 🔗 AAPKA NAYA SMART LINK (Line 260)
 const SMART_LINK = "https://directsinew.com/e9jidwhhz?key=0f70e227a7b1426bf36fc6930a4b0493";
-
 let hlsInstance = null;
 
-// SMART CLICK HANDLER (Pehle ad khulega, phir content)
-window.handleSmartAction = (callback) => {
+// 🔗 SMART ACTION HANDLER (Opens ad then content)
+window.handleAction = (type, targetUrl) => {
     window.open(SMART_LINK, '_blank');
     setTimeout(() => {
-        if(typeof callback === 'function') callback();
-    }, 150);
-};
-
-window.handleDownload = (originalUrl) => {
-    if(!originalUrl) return;
-    handleSmartAction(() => window.open(originalUrl, '_blank'));
-};
-
-window.handlePlayVideo = (url) => {
-    if(!url) return;
-    handleSmartAction(() => playVideo(url));
+        if(type === 'video') playVideo(targetUrl);
+        else window.open(targetUrl, '_blank');
+    }, 200);
 };
 
 async function startup() {
@@ -265,9 +271,6 @@ function listen() {
         }
         document.getElementById('globalLoader')?.remove();
         render();
-    }, (err) => {
-        console.error("Firestore Listen error", err);
-        document.getElementById('globalLoader')?.remove();
     });
 }
 
@@ -303,6 +306,7 @@ window.render = () => {
                         <span class="w-8 h-8 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center font-bold text-xs">${idx + 1}</span>
                         <div class="flex flex-col">
                            <h3 class="font-bold text-lg uppercase tracking-tight text-gray-800">${chap}</h3>
+                           ${isAdmin ? `<button onclick="openRenameModal('${chap}')" class="mt-1 text-[8px] font-bold text-indigo-500 uppercase bg-indigo-50 px-2 py-1 rounded w-fit">Edit Name</button>` : ''}
                         </div>
                     </div>
                     <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
@@ -314,7 +318,7 @@ window.render = () => {
                                 <p class="text-[9px] font-bold uppercase tracking-widest opacity-80">Revision Tool</p>
                                 <h4 class="font-bold uppercase">${labelName}</h4>
                             </div>
-                            <button onclick="handleDownload('${chapOnePager}')" class="bg-white text-indigo-600 px-4 py-2 rounded-xl text-[9px] font-bold uppercase">Open PDF</button>
+                            <button onclick="handleAction('pdf', '${chapOnePager}')" class="bg-white text-indigo-600 px-4 py-2 rounded-xl text-[9px] font-bold uppercase">Open PDF</button>
                         </div>
                     ` : ''}
                     <div class="space-y-3">
@@ -326,10 +330,9 @@ window.render = () => {
                                         <p class="text-[10px] text-gray-500 font-medium line-clamp-1">${v.customDescription || 'Premium Educational Resource'}</p>
                                     </div>
                                     <div class="flex flex-wrap gap-2">
-                                        <button onclick="handlePlayVideo('${v.m3u8Url}')" class="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-[9px] font-bold uppercase">Play Lecture</button>
-                                        ${v.notes ? `<button onclick="handleDownload('${v.notes}')" class="bg-white border border-gray-200 text-gray-600 px-5 py-2.5 rounded-lg text-[9px] font-bold uppercase">Notes</button>` : ''}
-                                        ${isAdmin ? `<button onclick="editEntry('${v.id}')" class="bg-indigo-50 text-indigo-600 p-2.5 rounded-lg"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg></button>` : ''}
-                                        ${isAdmin ? `<button onclick="deleteMe('${v.id}')" class="bg-red-50 text-red-600 p-2.5 rounded-lg"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"></path></svg></button>` : ''}
+                                        <button onclick="handleAction('video', '${v.m3u8Url}')" class="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-[9px] font-bold uppercase">Play Lecture</button>
+                                        ${v.notes ? `<button onclick="handleAction('pdf', '${v.notes}')" class="bg-white border border-gray-200 text-gray-600 px-5 py-2.5 rounded-lg text-[9px] font-bold uppercase">Notes</button>` : ''}
+                                        ${isAdmin ? `<button onclick="editEntry('${v.id}')" class="bg-indigo-50 text-indigo-600 p-2.5 rounded-lg">Edit</button>` : ''}
                                     </div>
                                 </div>
                             </div>
@@ -341,13 +344,32 @@ window.render = () => {
     }).join('');
 };
 
+window.openRenameModal = (chap) => {
+    document.getElementById('oldNameStore').value = chap;
+    document.getElementById('newNameInput').value = chap;
+    showModal('renameModal');
+};
+
+window.processRename = async () => {
+    const oldName = document.getElementById('oldNameStore').value;
+    const newName = document.getElementById('newNameInput').value.trim();
+    if (newName && newName !== oldName) {
+        const batch = writeBatch(db);
+        const q = query(collection(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos'), where("chapter", "==", oldName), where("subject", "==", currentSubject));
+        const snap = await getDocs(q);
+        snap.forEach((docRef) => batch.update(docRef.ref, { chapter: newName }));
+        await batch.commit();
+        closeModals();
+    } else closeModals();
+};
+
 window.selectPlatform = (p) => {
     currentPlatform = p;
     document.querySelectorAll('.platform-card').forEach(c => c.classList.remove('active'));
     document.getElementById(`plat-${p}`).classList.add('active');
     let platformVids = videoList.filter(v => (v.platform || 'NT') === p);
-    let availableSubs = [...new Set(platformVids.map(v => v.subject))];
-    if (availableSubs.length > 0) currentSubject = availableSubs[0];
+    let subs = [...new Set(platformVids.map(v => v.subject))];
+    if (subs.length > 0) currentSubject = subs[0];
     render();
 };
 
@@ -374,18 +396,13 @@ window.playVideo = (url) => {
 };
 
 window.saveVideo = async () => {
-    const title = document.getElementById('vTitle').value, 
-          sub = document.getElementById('vSub').value, 
-          chap = document.getElementById('vChap').value || 'General',
-          plat = document.getElementById('vPlatform').value,
-          m3u8 = document.getElementById('vUrl').value, 
-          notes = document.getElementById('vNotes').value, 
-          eId = document.getElementById('editId').value,
-          cNotes = document.getElementById('vChapNotes').value, 
-          desc = document.getElementById('vCustomDesc').value;
-
+    const title = document.getElementById('vTitle').value, m3u8 = document.getElementById('vUrl').value, eId = document.getElementById('editId').value;
     if(title && m3u8) {
-        const data = { title, subject: sub, chapter: chap, platform: plat, m3u8Url: m3u8, notes, chapNotes: cNotes, customDescription: desc, updatedAt: Date.now() };
+        const data = { 
+            title, subject: document.getElementById('vSub').value, chapter: document.getElementById('vChap').value || 'General',
+            platform: document.getElementById('vPlatform').value, m3u8Url: m3u8, notes: document.getElementById('vNotes').value,
+            chapNotes: document.getElementById('vChapNotes').value, customDescription: document.getElementById('vCustomDesc').value, updatedAt: Date.now() 
+        };
         if(eId) await updateDoc(doc(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos', eId), data);
         else await addDoc(collection(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos'), { ...data, createdAt: Date.now() });
         closeModals();
@@ -407,7 +424,6 @@ window.editEntry = (id) => {
     showModal('addModal');
 };
 
-window.deleteMe = async (id) => { if(confirm("Delete Content?")) await deleteDoc(doc(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos', id)); };
 window.selectSubject = (s) => { currentSubject = s; render(); };
 window.tryLogin = () => { if(document.getElementById('passInput').value === PASS_KEY) { isAdmin = true; closeModals(); render(); } };
 window.showModal = (id) => { 
@@ -421,18 +437,13 @@ window.closeModals = () => {
     document.getElementById('modalOverlay').style.opacity = '0'; 
     setTimeout(() => {
         document.getElementById('modalOverlay').classList.add('hidden');
-        ['loginModal','addModal','playerModal'].forEach(m => document.getElementById(m).classList.add('hidden'));
+        ['loginModal','addModal','playerModal', 'renameModal'].forEach(m => document.getElementById(m).classList.add('hidden'));
     }, 300); 
 };
 window.openLoginModal = () => isAdmin ? (isAdmin = false, location.reload()) : showModal('loginModal');
 window.openAddModal = () => { ['vTitle','vUrl','vSub','vChap','vNotes','vChapNotes','vCustomDesc','editId'].forEach(i=>document.getElementById(i).value=""); showModal('addModal'); };
 document.getElementById('searchInput').addEventListener('input', render);
-
-// Start priority
-window.onload = () => {
-    startup();
-};
+startup();
 </script>
-
 </body>
-    </html>
+                </html>
