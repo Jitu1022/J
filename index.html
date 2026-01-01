@@ -15,7 +15,6 @@
     <style>
         :root { --pw-blue: #5a4bda; --bg: #f8f9fd; }
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg); color: #1e2937; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
-        
         h1, h2, h3, h4, span, p, button, input { font-style: normal !important; }
 
         .platform-card { border: 2px solid #eef2f6; background: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; overflow: hidden; }
@@ -42,9 +41,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .hero-gradient { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
         .footer-card { background: white; border: 1px solid #eef2f6; border-radius: 2rem; padding: 2.5rem; }
-
-        /* Yellow Promo Box Style */
-        .yellow-box { background: #ffeb3b; border: 4px solid #000; border-radius: 24px; box-shadow: 8px 8px 0px #000; margin-bottom: 2rem; padding: 24px; text-align: center; }
     </style>
 </head>
 <body>
@@ -53,9 +49,6 @@
     <div class="spinner"></div>
     <p class="mt-4 text-[10px] font-bold uppercase tracking-widest text-indigo-600">Ruko jara sabar karo🤠 Loading...</p>
 </div>
-
-<!-- 🔔 Adsterra Sidebar/Social Bar Scripts -->
-<script type='text/javascript' src='//directsinew.com/e7/4b/57/e74b57d46e07ba1cd2bd054af0522b8d.js'></script>
 
 <header class="sticky top-0 z-50">
     <nav class="glass-nav px-6 py-4">
@@ -84,16 +77,6 @@
     </div>
 </section>
 
-<!-- 🚨 EARNING YELLOW BOX SECTION -->
-<div class="max-w-3xl mx-auto mt-8 px-6">
-    <div class="yellow-box">
-        <h2 class="text-black font-black text-xl uppercase mb-2">💸 Without Investment Aur Bina Mehnat Paise Kamao!🤑</h2>
-        <p class="text-black font-bold text-sm mb-4">Yaha dekho kese mahine ke ₹15,000 kamayein. Bilkul free trick!</p>
-        <a href="https://jituearningtips.blogspot.com" target="_blank" class="inline-block bg-[#f44336] text-white px-8 py-3 rounded-xl font-black uppercase border-2 border-black hover:scale-105 transition-transform">Visit Blog Now →</a>
-    </div>
-</div>
-
-<!-- Platforms Selection -->
 <section class="bg-white px-6 pt-4 pb-6">
     <div class="max-w-3xl mx-auto">
         <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4 text-center">Choose Your Platform</p>
@@ -110,30 +93,26 @@
     </div>
 </section>
 
-<!-- Subject Selector -->
 <div id="explore" class="bg-white border-b border-gray-100 px-4 py-6 sticky top-[72px] z-40">
     <div class="max-w-3xl mx-auto overflow-x-auto flex gap-3 no-scrollbar" id="subjectList"></div>
 </div>
 
 <main class="p-6 md:p-12">
     <div class="max-w-3xl mx-auto">
-        <!-- Search Box -->
         <div class="mb-10">
             <input id="searchInput" type="text" placeholder="Search Chapter or Lecture..." class="w-full bg-white border-2 border-gray-100 px-6 py-4 rounded-2xl outline-none focus:border-indigo-500 transition-all shadow-sm font-medium">
         </div>
 
-        <!-- Vertical Chapter List -->
         <div id="verticalContent" class="space-y-4"></div>
         
         <div id="emptyState" class="text-center py-20 hidden">
             <p class="text-xl font-bold text-gray-300 uppercase">No Content Found...</p>
         </div>
 
-        <!-- FOOTER SECTIONS -->
-          <div class="mt-40 space-y-16">
+        <div class="mt-40 space-y-16">
             <div id="about-us" class="footer-card">
                 <h2 class="text-3xl font-bold uppercase text-indigo-900 mb-8 border-b-4 border-indigo-600 inline-block">About Us</h2>
-                <p class="text-lg text-gray-700 leading-relaxed font-semibold">JITU VAULT ek educational platform hai jo specially Class 11 Science ke students ko dhyan mein rakkar banaya gaya hai. Humara mission har student ko Physics Wallah (PW) aur Next Toppers (NT) ke premium quality lectures aur handwritten notes free of cost provide karna hai, taaki financial barriers unki padhai mein rukaavat na banein.</p>
+                <p class="text-lg text-gray-700 leading-relaxed font-semibold">JITU VAULT ek educational platform hai jo specially Class 11 Science ke students ko dhyan mein rakkar banaya gaya hai. Humara mission har student ko Physics Wallah (PW) aur Next Toppers (NT) ke premium quality lectures aur handwritten notes free of cost provide karna hai.</p>
             </div>
 
             <div id="contact-us" class="footer-card bg-indigo-50">
@@ -142,34 +121,61 @@
                 <div class="flex flex-wrap gap-6">
                     <a href="https://youtube.com/@notjitu1022?si=ZivLdwErKW40-_87" class="bg-red-600 text-white px-8 py-4 rounded-2xl text-xs font-bold uppercase shadow-lg">YouTube Support</a>
                     <a href="https://www.instagram.com/notjitu_fz/" class="bg-purple-600 text-white px-8 py-4 rounded-2xl text-xs font-bold uppercase shadow-lg">Instagram</a>
-                    <a href="https://jituearningtips.blogspot.com" class="bg-green-600 text-white px-8 py-4 rounded-2xl text-xs font-bold uppercase shadow-lg">Support Me 🙏🥺</a>
                 </div>
             </div>
 
             <div id="privacy-policy" class="footer-card">
                 <h2 class="text-3xl font-bold uppercase text-indigo-900 mb-8 border-b-4 border-indigo-600 inline-block">Privacy Policy</h2>
-                <p class="text-lg text-gray-700 leading-relaxed font-semibold">Hum JITU VAULT par aapki privacy ka pura dhyan rakhte hain. Hum kisi bhi tarah ka personal data ya tracking nahi karte. Humari website par sirf educational content aur Google AdSense ka use hota hai jo unki apni policy ke mutabik cookies use karte hain. Humara uddeshya sirf aapko quality content dena hai.</p>
+                <p class="text-lg text-gray-700 leading-relaxed font-semibold">Hum JITU VAULT par aapki privacy ka pura dhyan rakhte hain. Hum kisi bhi tarah ka personal data ya tracking nahi karte. Humari website par sirf educational content aur Google AdSense ka use hota hai.</p>
             </div>
 
             <div id="disclaimer" class="footer-card">
                 <h2 class="text-3xl font-bold uppercase text-indigo-900 mb-8 border-b-4 border-indigo-600 inline-block">Disclaimer</h2>
-                <p class="text-lg text-gray-700 leading-relaxed font-semibold">JITU VAULT kisi bhi official educational board ya sarkari sanstha se juda hua nahi hai. Yahan diya gaya sara material sirf educational purpose ke liye hai. Hum content ki accuracy maintain karne ki puri koshish karte hain par students ko official textbooks se bhi verify karne ki salah di jati hai.</p>
+                <p class="text-lg text-gray-700 leading-relaxed font-semibold">JITU VAULT kisi bhi official educational board ya sarkari sanstha se juda hua nahi hai. Yahan diya gaya sara material sirf educational purpose ke liye hai.</p>
             </div>
         </div>
     </div>
 </main>
 
-<!-- Modal System -->
 <div id="modalOverlay" class="fixed inset-0 bg-gray-950/90 backdrop-blur-xl hidden z-[100] items-center justify-center p-6 opacity-0 transition-all duration-300">
     
-    <!-- Admin Login -->
+    <div id="downloadStepModal" class="bg-white rounded-[2.5rem] w-full max-w-md p-8 hidden shadow-2xl border-4 border-indigo-600">
+        <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h3 class="text-xl font-bold uppercase text-indigo-900 mb-2">Lecture Link Copied ✅</h3>
+            <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-6">Ab niche diye steps follow karein👇</p>
+            
+            <div class="text-left space-y-4 mb-8">
+                <div class="flex gap-4 items-start">
+                    <span class="bg-indigo-600 text-white w-6 h-6 rounded-md flex-shrink-0 flex items-center justify-center text-xs font-bold">1</span>
+                    <p class="text-sm font-semibold text-gray-700">m3u8.dev website par jaakar link *Paste* karein.</p>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="bg-indigo-600 text-white w-6 h-6 rounded-md flex-shrink-0 flex items-center justify-center text-xs font-bold">2</span>
+                    <p class="text-sm font-semibold text-gray-700">*TS Download* ya *MP4 Download* button par click karein.</p>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="bg-indigo-600 text-white w-6 h-6 rounded-md flex-shrink-0 flex items-center justify-center text-xs font-bold">3</span>
+                    <p class="text-sm font-semibold text-gray-700">Niche 4 servers mein se koi *1 Select* karein.</p>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <span class="bg-indigo-600 text-white w-6 h-6 rounded-md flex-shrink-0 flex items-center justify-center text-xs font-bold">4</span>
+                    <p class="text-sm font-semibold text-gray-700">Dubara *TS/MP4 Download* par click karein, downloading shuru ho jayegi!</p>
+                </div>
+            </div>
+            
+            <button onclick="goToDownloader()" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold uppercase tracking-widest shadow-lg shadow-indigo-200 hover:scale-105 transition-transform">Go to m3u8.dev →</button>
+        </div>
+    </div>
+
     <div id="loginModal" class="bg-white rounded-[2.5rem] w-full max-w-sm p-10 hidden shadow-2xl">
         <h3 class="text-2xl font-bold mb-6 text-center uppercase">Admin Access</h3>
         <input id="passInput" type="password" placeholder="Passkey" class="w-full bg-gray-50 p-5 rounded-2xl mb-6 text-center text-2xl font-bold border-2 border-gray-100 outline-none">
         <button onclick="tryLogin()" class="w-full bg-indigo-600 text-white py-5 rounded-2xl font-bold uppercase tracking-widest">Verify</button>
     </div>
 
-    <!-- Rename Chapter Modal -->
     <div id="renameModal" class="bg-white rounded-[2.5rem] w-full max-w-sm p-10 hidden shadow-2xl">
         <h3 class="text-xl font-bold mb-6 text-center uppercase text-indigo-900">Rename Chapter</h3>
         <input id="newNameInput" type="text" placeholder="Enter New Name" class="w-full bg-gray-50 p-5 rounded-2xl mb-6 font-bold border-2 border-gray-100 outline-none">
@@ -180,7 +186,6 @@
         </div>
     </div>
 
-    <!-- Content Upload Modal -->
     <div id="addModal" class="bg-white rounded-[2.5rem] w-full max-w-xl p-10 hidden max-h-[90vh] overflow-y-auto no-scrollbar">
         <h3 class="text-3xl font-bold mb-8 uppercase text-indigo-900">Add Content</h3>
         <div class="space-y-4">
@@ -213,7 +218,6 @@
         </div>
     </div>
 
-    <!-- Player -->
     <div id="playerModal" class="bg-black rounded-3xl w-full max-w-4xl overflow-hidden hidden shadow-2xl relative">
         <button onclick="closeModals()" class="absolute top-4 right-4 z-50 bg-white/20 text-white p-2 rounded-full hover:bg-white/40">✕</button>
         <div class="aspect-video bg-black">
@@ -243,16 +247,30 @@ const firebaseConfig = {
 let db, auth, videoList = [], isAdmin = false, currentSubject = '', currentPlatform = 'PW';
 const PASS_KEY = "Jitu9027", COLLECTION_ID = "jitu_ultra_premium_v2";
 const SUBJECT_ORDER = ["Physics", "Chemistry", "Maths", "Biology", "English"];
-const SMART_LINK = "https://directsinew.com/e9jidwhhz?key=0f70e227a7b1426bf36fc6930a4b0493";
 let hlsInstance = null;
 
-// 🔗 SMART ACTION HANDLER (Opens ad then content)
+// ✨ NEW CUSTOM DOWNLOAD HANDLER (NO BROWSER ALERT)
+window.handleDownloadLink = (m3u8Url) => {
+    // 1. Copy Link to Clipboard
+    const tempInput = document.createElement("input");
+    tempInput.value = m3u8Url;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+
+    // 2. Show Custom Popup
+    showModal('downloadStepModal');
+};
+
+window.goToDownloader = () => {
+    window.open("https://m3u8.dev/", "_blank");
+    closeModals();
+};
+
 window.handleAction = (type, targetUrl) => {
-    window.open(SMART_LINK, '_blank');
-    setTimeout(() => {
-        if(type === 'video') playVideo(targetUrl);
-        else window.open(targetUrl, '_blank');
-    }, 200);
+    if(type === 'video') playVideo(targetUrl);
+    else window.open(targetUrl, '_blank');
 };
 
 async function startup() {
@@ -298,7 +316,6 @@ window.render = () => {
     verticalCont.innerHTML = chapters.map((chap, idx) => {
         const chapVideos = subVideos.filter(v => (v.chapter || 'General') === chap);
         const chapOnePager = chapVideos.find(v => v.chapNotes)?.chapNotes;
-        const labelName = (currentPlatform === 'PW') ? 'DPP' : 'Chapter One Pager Notes';
 
         return `
             <div class="chapter-accordion" id="chap-${idx}">
@@ -310,15 +327,12 @@ window.render = () => {
                            ${isAdmin ? `<button onclick="openRenameModal('${chap}')" class="mt-1 text-[8px] font-bold text-indigo-500 uppercase bg-indigo-50 px-2 py-1 rounded w-fit">Edit Name</button>` : ''}
                         </div>
                     </div>
-                    <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
                 <div class="chapter-content">
                     ${chapOnePager ? `
-                        <div class="mb-6 p-4 bg-indigo-600 rounded-2xl flex items-center justify-between text-white shadow-lg shadow-indigo-100">
-                            <div>
-                                <p class="text-[9px] font-bold uppercase tracking-widest opacity-80">Revision Tool</p>
-                                <h4 class="font-bold uppercase">${labelName}</h4>
-                            </div>
+                        <div class="mb-6 p-4 bg-indigo-600 rounded-2xl flex items-center justify-between text-white shadow-lg">
+                            <h4 class="font-bold uppercase text-xs">Chapter DPP / Revision Notes</h4>
                             <button onclick="handleAction('pdf', '${chapOnePager}')" class="bg-white text-indigo-600 px-4 py-2 rounded-xl text-[9px] font-bold uppercase">Open PDF</button>
                         </div>
                     ` : ''}
@@ -331,9 +345,10 @@ window.render = () => {
                                         <p class="text-[10px] text-gray-500 font-medium line-clamp-1">${v.customDescription || 'Premium Educational Resource'}</p>
                                     </div>
                                     <div class="flex flex-wrap gap-2">
-                                        <button onclick="handleAction('video', '${v.m3u8Url}')" class="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-[9px] font-bold uppercase">Play Lecture</button>
+                                        <button onclick="handleAction('video', '${v.m3u8Url}')" class="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-[9px] font-bold uppercase">Play</button>
+                                        <button onclick="handleDownloadLink('${v.m3u8Url}')" class="bg-green-600 text-white px-5 py-2.5 rounded-lg text-[9px] font-bold uppercase">Download</button>
                                         ${v.notes ? `<button onclick="handleAction('pdf', '${v.notes}')" class="bg-white border border-gray-200 text-gray-600 px-5 py-2.5 rounded-lg text-[9px] font-bold uppercase">Notes</button>` : ''}
-                                        ${isAdmin ? `<button onclick="editEntry('${v.id}')" class="bg-indigo-50 text-indigo-600 p-2.5 rounded-lg">Edit</button>` : ''}
+                                        ${isAdmin ? `<button onclick="editEntry('${v.id}')" class="bg-indigo-50 text-indigo-600 p-2.5 rounded-lg text-[9px] font-bold">Edit</button>` : ''}
                                     </div>
                                 </div>
                             </div>
@@ -368,9 +383,6 @@ window.selectPlatform = (p) => {
     currentPlatform = p;
     document.querySelectorAll('.platform-card').forEach(c => c.classList.remove('active'));
     document.getElementById(`plat-${p}`).classList.add('active');
-    let platformVids = videoList.filter(v => (v.platform || 'NT') === p);
-    let subs = [...new Set(platformVids.map(v => v.subject))];
-    if (subs.length > 0) currentSubject = subs[0];
     render();
 };
 
@@ -438,7 +450,7 @@ window.closeModals = () => {
     document.getElementById('modalOverlay').style.opacity = '0'; 
     setTimeout(() => {
         document.getElementById('modalOverlay').classList.add('hidden');
-        ['loginModal','addModal','playerModal', 'renameModal'].forEach(m => document.getElementById(m).classList.add('hidden'));
+        ['loginModal','addModal','playerModal', 'renameModal', 'downloadStepModal'].forEach(m => document.getElementById(m).classList.add('hidden'));
     }, 300); 
 };
 window.openLoginModal = () => isAdmin ? (isAdmin = false, location.reload()) : showModal('loginModal');
@@ -447,4 +459,4 @@ document.getElementById('searchInput').addEventListener('input', render);
 startup();
 </script>
 </body>
-                </html>
+                                                                                                                                                                        </html>
