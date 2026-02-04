@@ -31,27 +31,50 @@
         .spinner { width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid var(--pw-blue); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* ORIGINAL FOOTER CARDS */
         .footer-card { background: white; border: 1px solid #eef2f6; border-radius: 2rem; padding: 2.5rem; margin-bottom: 2rem; }
         .hero-gradient { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
+
+        /* REDIRECT POPUP STYLES */
+        #redirect-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; z-index: 10001; }
+        .redirect-card { background: white; padding: 2.5rem; border-radius: 2.5rem; text-align: center; max-width: 380px; width: 90%; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        .timer-svg { width: 100px; height: 100px; transform: rotate(-90deg); }
+        .timer-circle-bg { fill: none; stroke: #e2e8f0; stroke-width: 6; }
+        .timer-circle-prog { fill: none; stroke: #4f46e5; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 283; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear; }
+        @keyframes rocket-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .rocket-icon { animation: rocket-float 2s ease-in-out infinite; display: inline-block; font-size: 3rem; }
     </style>
 </head>
 <body>
-<div id="migration-banner" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); color: white; padding: 18px 25px; font-family: 'Outfit', sans-serif; position: sticky; top: 0; left: 0; right: 0; z-index: 9999; border-bottom: 4px solid #4f46e5; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
-    
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <div style="background: #fbbf24; color: #1e1b4b; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">!</div>
-        <div>
-            <h3 style="margin: 0; font-size: 16px; letter-spacing: 0.5px;">NEW VERSION IS LIVE! 🚀</h3>
-            <p style="margin: 3px 0 0 0; font-size: 12px; opacity: 0.8; font-weight: 400;">Try our new faster & smoother website for a better experience.</p>
+
+<div id="redirect-overlay">
+    <div class="redirect-card">
+        <div class="rocket-icon mb-4">🚀</div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-2 uppercase tracking-tight">Nayi Website Live Hai!</h2>
+        <p class="text-gray-500 text-[11px] font-medium mb-8 uppercase tracking-wide">Behtar experience ke liye hum shift ho rahe hain...</p>
+
+        <div class="relative flex items-center justify-center mb-8">
+            <svg class="timer-svg">
+                <circle cx="50" cy="50" r="45" class="timer-circle-bg"></circle>
+                <circle cx="50" cy="50" r="45" class="timer-circle-prog" id="timerBar"></circle>
+            </svg>
+            <div class="absolute flex flex-col items-center">
+                <span id="countText" class="text-2xl font-bold text-indigo-600">5</span>
+                <span class="text-[8px] font-bold text-gray-400 uppercase">Sec</span>
+            </div>
+        </div>
+
+        <div class="space-y-3">
+            <a href="https://notjitu.vercel.app" class="block w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold uppercase text-xs shadow-lg hover:scale-105 transition-transform">
+                Abhi Chalein →
+            </a>
+            <button onclick="document.getElementById('redirect-overlay').style.display='none'" class="text-gray-400 text-[9px] font-bold uppercase tracking-[0.2em] hover:text-indigo-500">
+                Yahīñ Rukeiñ
+            </button>
         </div>
     </div>
-
-    <a href="https://notjitu.vercel.app" style="background: #4f46e5; color: white; padding: 10px 24px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 13px; text-transform: uppercase; border: 2px solid rgba(255,255,255,0.2); transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);">
-        Switch to New Site →
-    </a>
 </div>
+
 <div id="globalLoader">
     <div class="spinner"></div>
     <p class="mt-4 text-[10px] font-semibold uppercase tracking-widest text-indigo-600"> Wait ✋️ Website Is Loading...</p>
@@ -78,7 +101,6 @@
     <p class="text-indigo-200 text-[10px] uppercase tracking-widest">Physics • Chemistry • Maths • Biology • English</p>
 </section>
 
-<!-- Platforms Section (Compact) -->
 <div class="max-w-4xl mx-auto px-6 -mt-8 grid grid-cols-3 gap-3">
     <div id="plat-PW" onclick="selectPlatform('PW')" class="platform-card p-3 active text-center">
         <img src="https://i.ibb.co/7tTCGV81/download.png" class="w-12 h-12 mx-auto rounded-full mb-2 border-2 border-white shadow-sm">
@@ -94,7 +116,6 @@
     </div>
 </div>
 
-<!-- Weekly Planner -->
 <div id="plannerWrapper" class="max-w-3xl mx-auto px-6 mt-8 hidden">
     <div class="bg-indigo-600 rounded-2xl p-4 flex items-center justify-between text-white shadow-lg">
         <div onclick="openPlanner()" class="flex items-center gap-3 cursor-pointer">
@@ -116,60 +137,33 @@
     <div id="verticalContent" class="space-y-4"></div>
     <div id="emptyState" class="text-center py-20 hidden text-gray-300 uppercase font-bold">No Content Found...</div>
 
-    <!-- ORIGINAL FOOTER SECTIONS (From your previous code) -->
     <div class="mt-40 space-y-16">
         <div id="about-us" class="footer-card">
             <h2 class="text-2xl font-bold uppercase text-indigo-900 mb-6 border-b-4 border-indigo-600 inline-block">About Us</h2>
-            <p class="text-md text-gray-700 leading-relaxed font-medium">JITU VAULT ek educational platform hai jo specially Class 11 aur 12 Science ke students ko dhyan mein rakkar banaya gaya hai. Humara mission har student ko premium quality lectures aur notes free of cost provide karna hai.</p>
+            <p class="text-md text-gray-700 leading-relaxed font-medium">JITU VAULT ek educational platform hai jo specially Class 11 aur 12 Science ke students ko dhyan mein rakkar banaya gaya hai.</p>
         </div>
 
         <div id="contact-us" class="footer-card bg-indigo-50">
             <h2 class="text-2xl font-bold uppercase text-indigo-900 mb-6 border-b-4 border-indigo-600 inline-block">Contact Us</h2>
-            <p class="text-md text-gray-700 leading-relaxed font-medium mb-8">Agar aapko resources access karne mein koi dikkat ho rahi hai ya aap koi feedback dena chahte hain, toh humein contact karein, gmail - gajendrakushwah1027@gmail.com</p>
+            <p class="text-md text-gray-700 leading-relaxed font-medium mb-8">Gmail - gajendrakushwah1027@gmail.com</p>
             <div class="flex flex-wrap gap-4">
                 <a href="https://youtube.com/@notjitu1022" class="bg-red-600 text-white px-8 py-4 rounded-2xl text-[10px] font-bold uppercase shadow-lg">YouTube Support</a>
                 <a href="https://www.instagram.com/notjitu_fz/" class="bg-purple-600 text-white px-8 py-4 rounded-2xl text-[10px] font-bold uppercase shadow-lg">Instagram</a>
             </div>
         </div>
-
-        <div id="privacy-policy" class="footer-card">
-            <h2 class="text-2xl font-bold uppercase text-indigo-900 mb-6 border-b-4 border-indigo-600 inline-block">Privacy Policy</h2>
-            <p class="text-md text-gray-700 leading-relaxed font-medium">Hum JITU VAULT par aapki privacy ka pura dhyan rakhte hain. Hum kisi bhi tarah ka personal data ya tracking nahi karte. Humari website par sirf educational content ka use hota hai.</p>
-        </div>
-
-        <div id="disclaimer" class="footer-card">
-            <h2 class="text-2xl font-bold uppercase text-indigo-900 mb-6 border-b-4 border-indigo-600 inline-block">Disclaimer</h2>
-            <p class="text-md text-gray-700 leading-relaxed font-medium">JITU VAULT kisi bhi official educational board se juda hua nahi hai. Yahan diya gaya sara material sirf educational purpose ke liye hai.</p>
-        </div>
     </div>
 </main>
 
-<!-- Modals Overlay -->
 <div id="modalOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden z-[100] items-center justify-center p-6 opacity-0 transition-all duration-300">
-    
-    <!-- ORIGINAL DOWNLOAD MODAL (As requested) -->
     <div id="downloadStepModal" class="bg-white rounded-[2.5rem] w-full max-w-md p-8 hidden shadow-2xl border-4 border-indigo-600">
         <div class="text-center">
             <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-2xl">✓</div>
             <h3 class="text-xl font-bold uppercase text-indigo-900 mb-2">Lecture Link Copied ✅</h3>
             <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-6">Ab niche diye steps follow karein👇</p>
-            
-            <div class="text-left space-y-4 mb-8">
-                <div class="flex gap-4 items-start">
-                    <span class="bg-indigo-600 text-white w-6 h-6 rounded-md flex-shrink-0 flex items-center justify-center text-xs font-bold">1</span>
-                    <p class="text-sm font-medium text-gray-700">m3u8.dev website par jaakar link *Paste* karein.</p>
-                </div>
-                <div class="flex gap-4 items-start">
-                    <span class="bg-indigo-600 text-white w-6 h-6 rounded-md flex-shrink-0 flex items-center justify-center text-xs font-bold">2</span>
-                    <p class="text-sm font-medium text-gray-700">*TS Download* ya *MP4 Download* button par click karein, Niche Koi 1 Server select karein , Again *TS/MP4* Click arein</p>
-                </div>
-            </div>
-            
             <button onclick="window.open('https://m3u8.dev/', '_blank');closeModals()" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold uppercase text-xs shadow-lg hover:scale-105 transition-transform">Go to m3u8.dev →</button>
         </div>
     </div>
 
-    <!-- Rename Modal -->
     <div id="renameModal" class="bg-white rounded-[2.5rem] w-full max-w-sm p-8 hidden">
         <h3 class="text-lg font-bold mb-4 uppercase text-center text-indigo-900">Rename Chapter</h3>
         <input id="newNameInput" type="text" class="w-full bg-gray-50 p-4 rounded-xl mb-6 border-2 border-gray-100 outline-none font-bold">
@@ -177,46 +171,12 @@
         <button onclick="processRename()" class="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold uppercase text-xs">Update All Lectures</button>
     </div>
 
-    <!-- Admin Add Content -->
-    <div id="addModal" class="bg-white rounded-[2.5rem] w-full max-w-xl p-8 hidden max-h-[90vh] overflow-y-auto no-scrollbar">
-        <h3 class="text-2xl font-bold mb-8 uppercase text-indigo-900">Manage Content</h3>
-        <div class="space-y-4">
-            <div class="grid grid-cols-2 gap-4">
-                <select id="vPlatform" class="w-full bg-gray-50 p-4 rounded-xl font-bold outline-none text-sm">
-                    <option value="PW">Physics Wallah</option>
-                    <option value="NT">Nirbhay 11th</option>
-                    <option value="NT12">Nirbhay 12th</option>
-                </select>
-                <input id="vSub" type="text" placeholder="Subject (e.g. Physics)" class="w-full bg-gray-50 p-4 rounded-xl outline-none font-bold text-sm">
-            </div>
-            <input id="vChap" type="text" placeholder="Chapter Name" class="w-full bg-gray-50 p-4 rounded-xl outline-none font-bold text-sm">
-            <input id="vTitle" type="text" placeholder="Lecture Title (e.g. Lecture-01)" class="w-full bg-gray-50 p-4 rounded-xl outline-none font-bold text-sm">
-            <input id="vUrl" type="text" placeholder="M3U8 / YT Link" class="w-full bg-gray-50 p-4 rounded-xl outline-none text-xs">
-            <input id="vNotes" type="text" placeholder="Notes PDF Link" class="w-full bg-gray-50 p-4 rounded-xl outline-none text-xs">
-            <input id="vChapNotes" type="text" placeholder="One-Pager / DPP Link" class="w-full bg-gray-50 p-4 rounded-xl outline-none text-xs">
-            <input type="hidden" id="editId">
-            <div class="flex gap-4 pt-4">
-                <button onclick="closeModals()" class="flex-1 font-bold text-gray-400 uppercase text-xs">Cancel</button>
-                <button onclick="saveVideo()" class="flex-[2] bg-indigo-600 text-white py-4 rounded-2xl font-bold uppercase text-xs shadow-md">Save Changes</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Planner Edit -->
-    <div id="plannerModal" class="bg-white rounded-[2.5rem] w-full max-w-sm p-8 hidden">
-        <h3 class="text-xl font-bold mb-4 uppercase text-indigo-900">Edit Planner Link</h3>
-        <input id="plannerUrlInput" type="text" placeholder="Paste link here" class="w-full bg-gray-50 p-4 rounded-xl mb-6 outline-none text-xs font-bold">
-        <button onclick="savePlannerLink()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold uppercase text-xs">Save Link</button>
-    </div>
-
-    <!-- Login -->
     <div id="loginModal" class="bg-white rounded-[2.5rem] w-full max-w-sm p-8 hidden text-center">
         <h3 class="text-xl font-bold mb-6 uppercase text-indigo-900 tracking-widest">Admin Access</h3>
         <input id="passInput" type="password" placeholder="Enter Passkey" class="w-full bg-gray-50 p-5 rounded-2xl mb-6 text-center text-xl font-bold border-2 border-gray-100 outline-none">
         <button onclick="tryLogin()" class="w-full bg-indigo-600 text-white py-4 rounded-2xl font-bold uppercase text-xs">Verify</button>
     </div>
 
-    <!-- Player -->
     <div id="playerModal" class="bg-black rounded-3xl w-full max-w-4xl overflow-hidden hidden relative">
         <video id="hlsVideo" controls autoplay playsinline class="w-full h-full aspect-video"></video>
         <button onclick="closeModals()" class="absolute top-4 right-4 bg-white/20 text-white p-2 rounded-full hover:bg-white/40">✕</button>
@@ -224,7 +184,7 @@
 </div>
 
 <footer class="py-12 border-t border-gray-100 text-center">
-    <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.3em]">© 2026 JITU EDUCATIONAL HUB | SHIKSHA SABKE LIYE</p>
+    <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.3em]">© 2026 JITU EDUCATIONAL HUB</p>
 </footer>
 
 <script type="module">
@@ -245,6 +205,27 @@ let db, auth, videoList = [], isAdmin = false, currentSubject = '', currentPlatf
 const PASS_KEY = "Jitu9027", COLLECTION_ID = "jitu_ultra_premium_v2";
 const SUBJECT_ORDER = ["Physics", "Chemistry", "Maths", "Biology", "English"];
 let hlsInstance = null;
+
+// REDIRECT LOGIC
+(function() {
+    let timeLeft = 5;
+    const countText = document.getElementById('countText');
+    const timerBar = document.getElementById('timerBar');
+    const totalDash = 283; 
+
+    const redirectTimer = setInterval(() => {
+        timeLeft--;
+        if (countText) countText.innerText = timeLeft;
+        if (timerBar) {
+            const offset = totalDash - (timeLeft / 5) * totalDash;
+            timerBar.style.strokeDashoffset = offset;
+        }
+        if (timeLeft <= 0) {
+            clearInterval(redirectTimer);
+            window.location.href = "https://notjitu.vercel.app";
+        }
+    }, 1000);
+})();
 
 async function startup() {
     const app = initializeApp(firebaseConfig);
@@ -288,7 +269,6 @@ window.render = () => {
     let subVideos = platformVids.filter(v => v.subject.toLowerCase() === currentSubject.toLowerCase() && v.title.toLowerCase().includes(search));
     subVideos.sort((a,b) => natSort(a.title, b.title));
 
-    // Case Insensitive Grouping
     const chaptersMap = {};
     subVideos.forEach(v => {
         const cName = v.chapter || 'General Content';
@@ -317,24 +297,15 @@ window.render = () => {
                     <svg class="w-4 h-4 text-gray-400 mt-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="3"></path></svg>
                 </div>
                 <div class="chapter-content">
-                    ${onePager ? `
-                        <div class="mb-4 p-3 bg-indigo-600 rounded-xl flex items-center justify-between text-white shadow-md">
-                            <span class="text-[9px] font-bold uppercase">Revision / DPP Notes</span>
-                            <button onclick="window.open('${onePager}', '_blank')" class="bg-white text-indigo-600 px-3 py-1.5 rounded-lg text-[8px] font-bold uppercase">Open PDF</button>
-                        </div>
-                    ` : ''}
                     <div class="space-y-3">
                         ${group.items.map(v => `
                             <div class="bg-gray-50 p-4 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
                                 <div class="flex-1">
                                     <span class="text-[11px] font-bold text-gray-700 uppercase block leading-tight">${v.title}</span>
-                                    <span class="text-[8px] text-gray-400 font-bold uppercase tracking-wider">Premium Content</span>
                                 </div>
                                 <div class="flex flex-wrap gap-2">
                                     <button onclick="playVideo('${v.m3u8Url}')" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-[9px] font-bold uppercase shadow-sm">Play</button>
                                     <button onclick="handleDownload('${v.m3u8Url}')" class="bg-green-600 text-white px-4 py-2 rounded-lg text-[9px] font-bold uppercase shadow-sm">Download</button>
-                                    ${v.notes ? `<button onclick="window.open('${v.notes}', '_blank')" class="bg-white border border-gray-200 text-gray-600 px-4 py-2 rounded-lg text-[9px] font-bold uppercase shadow-sm">Notes</button>` : ''}
-                                    ${isAdmin ? `<button onclick="editEntry('${v.id}')" class="bg-gray-200 p-2 rounded-lg text-[10px]">⚙️</button>` : ''}
                                 </div>
                             </div>
                         `).join('')}
@@ -355,25 +326,6 @@ window.handleDownload = (url) => {
     showModal('downloadStepModal');
 };
 
-window.openRenameModal = (chap) => {
-    document.getElementById('oldNameStore').value = chap;
-    document.getElementById('newNameInput').value = chap;
-    showModal('renameModal');
-};
-
-window.processRename = async () => {
-    const oldName = document.getElementById('oldNameStore').value;
-    const newName = document.getElementById('newNameInput').value.trim();
-    if(newName && newName !== oldName) {
-        const batch = writeBatch(db);
-        const q = query(collection(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos'), where("chapter", "==", oldName));
-        const snap = await getDocs(q);
-        snap.forEach(d => batch.update(d.ref, { chapter: newName }));
-        await batch.commit();
-        closeModals();
-    }
-};
-
 window.playVideo = (url) => {
     if(url.includes('.m3u8')) {
         const v = document.getElementById('hlsVideo');
@@ -385,51 +337,6 @@ window.playVideo = (url) => {
             hlsInstance.attachMedia(v);
         } else { v.src = url; }
     } else window.open(url, '_blank');
-};
-
-window.openPlanner = async () => {
-    const docSnap = await getDoc(doc(db, 'settings', 'planner_' + currentPlatform));
-    if (docSnap.exists()) window.open(docSnap.data().url, '_blank');
-};
-
-window.openPlannerEdit = async () => {
-    const docSnap = await getDoc(doc(db, 'settings', 'planner_' + currentPlatform));
-    if (docSnap.exists()) document.getElementById('plannerUrlInput').value = docSnap.data().url;
-    showModal('plannerModal');
-};
-
-window.savePlannerLink = async () => {
-    await setDoc(doc(db, 'settings', 'planner_' + currentPlatform), { url: document.getElementById('plannerUrlInput').value });
-    closeModals();
-};
-
-window.saveVideo = async () => {
-    const eId = document.getElementById('editId').value;
-    const data = { 
-        title: document.getElementById('vTitle').value, 
-        subject: document.getElementById('vSub').value, 
-        chapter: document.getElementById('vChap').value,
-        platform: document.getElementById('vPlatform').value, 
-        m3u8Url: document.getElementById('vUrl').value, 
-        notes: document.getElementById('vNotes').value, 
-        chapNotes: document.getElementById('vChapNotes').value
-    };
-    if(eId) await updateDoc(doc(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos', eId), data);
-    else await addDoc(collection(db, 'artifacts', COLLECTION_ID, 'public', 'data', 'videos'), data);
-    closeModals();
-};
-
-window.editEntry = (id) => {
-    const v = videoList.find(i => i.id === id);
-    document.getElementById('editId').value = v.id;
-    document.getElementById('vPlatform').value = v.platform || "PW";
-    document.getElementById('vTitle').value = v.title;
-    document.getElementById('vSub').value = v.subject;
-    document.getElementById('vChap').value = v.chapter;
-    document.getElementById('vUrl').value = v.m3u8Url;
-    document.getElementById('vNotes').value = v.notes;
-    document.getElementById('vChapNotes').value = v.chapNotes || "";
-    showModal('addModal');
 };
 
 window.selectPlatform = (p) => {
@@ -453,13 +360,12 @@ window.closeModals = () => {
     document.getElementById('modalOverlay').style.opacity = '0'; 
     setTimeout(() => {
         document.getElementById('modalOverlay').classList.add('hidden');
-        ['loginModal','addModal','playerModal','renameModal','downloadStepModal','plannerModal'].forEach(m => document.getElementById(m).classList.add('hidden'));
+        ['loginModal','playerModal','renameModal','downloadStepModal'].forEach(m => document.getElementById(m).classList.add('hidden'));
     }, 300); 
 };
 window.openLoginModal = () => isAdmin ? (isAdmin = false, location.reload()) : showModal('loginModal');
-window.openAddModal = () => { ['vTitle','vUrl','vSub','vChap','vNotes','vChapNotes','editId'].forEach(i=>document.getElementById(i).value=""); showModal('addModal'); };
 document.getElementById('searchInput').addEventListener('input', render);
 startup();
 </script>
-</body>
+</body> 
     </html>
